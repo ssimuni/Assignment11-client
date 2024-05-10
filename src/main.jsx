@@ -4,6 +4,8 @@ import Root from './layouts/Root.jsx'
 import Home from './components/Home.jsx';
 import PrivateRoute from "./routes/PrivateRoute";
 import Error from './components/Error.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import React from 'react'
 import {
   createBrowserRouter,
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>,
       }
     ]
   },
