@@ -4,23 +4,11 @@ import { AuthContext } from '../providers/AuthProvider'
 
 
 const Navbar = () => {
+   
     const { user, logOut } = useContext(AuthContext);
     const [loadingUser, setLoadingUser] = useState(true);
     const [isHovered, setIsHovered] = useState(false);
-    // const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
-    // const handleToggle = (e) => {
-    //     if (e.target.checked) {
-    //         setTheme("dark");
-    //     } else {
-    //         setTheme("light");
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     localStorage.setItem("theme", theme);
-    //     const localTheme = localStorage.getItem("theme");
-    //     document.querySelector("html").setAttribute("data-theme", localTheme), [theme]
-    // });
+  
 
     useEffect(() => {
         setLoadingUser(true);
@@ -98,7 +86,8 @@ const Navbar = () => {
         <li><NavLink to="/allartcraft">See All Items</NavLink></li> */}
     </>
     return (
-        <div className="navbar bg-base-100 ">
+
+        <div className="navbar fixed top-0 w-full backdrop-blur-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -112,6 +101,7 @@ const Navbar = () => {
                 <a id="not-clickable"><img className="h-10 hidden lg:block" src="/logo.png" alt="" /></a>
 
             </div>
+
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navlinks}

@@ -6,6 +6,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import Error from './components/Error.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import './index.css'
 import React from 'react'
 import {
   createBrowserRouter,
