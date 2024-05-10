@@ -1,4 +1,9 @@
 import ReactDOM from 'react-dom/client'
+import AuthProvider from './providers/AuthProvider.jsx'
+import Root from './layouts/Root.jsx'
+import Home from './components/Home.jsx';
+import PrivateRoute from "./routes/PrivateRoute";
+import Error from './components/Error.jsx';
 import React from 'react'
 import {
   createBrowserRouter,
@@ -9,12 +14,21 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root></Root>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>,
+      }
+    ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
