@@ -25,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/volunteer-posts')
       },
       {
         path: '/login',
@@ -36,11 +37,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-volunteer-post',
-        element: <Add_Volunteer_Post></Add_Volunteer_Post>,
+        element: <PrivateRoute><Add_Volunteer_Post></Add_Volunteer_Post></PrivateRoute>,
       },
       {
         path: '/need-volunteer',
-        element: <Need_Volunteer></Need_Volunteer>
+        element: <Need_Volunteer></Need_Volunteer>,
+        loader: () => fetch('http://localhost:5000/volunteer-posts')
       }
     ]
   },

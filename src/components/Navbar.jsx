@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
 
@@ -10,6 +10,8 @@ const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const dropdownRef = useRef(null);
+
     useEffect(() => {
         setLoadingUser(true);
         const timeout = setTimeout(() => {
@@ -18,6 +20,22 @@ const Navbar = () => {
 
         return () => clearTimeout(timeout);
     }, []);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false); // Close dropdown if click is outside the dropdown area
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+
     const handleLogOut = () => {
         logOut()
             .then()
@@ -41,7 +59,8 @@ const Navbar = () => {
                                         <div className="w-10 rounded-full">
                                             <img alt="Tailwind CSS Navbar component" src={user.photoURL || 'https://via.placeholder.com/150'}
                                                 onMouseEnter={() => setIsHovered(true)}
-
+                                                onMouseMove={() => setIsHovered(true)}
+                                                onMouseLeave={() => setIsHovered(true)}
                                             />
                                         </div>
                                     </div>
@@ -54,21 +73,20 @@ const Navbar = () => {
                                     {loadingUser ? 'Loading...' : user.displayName}
 
 
-
                                 </div>
                             )}
 
                             {isDropdownOpen && (
-                                <div className="absolute top-0 right-12 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 w-56">
+                                <div className="absolute top-0 right-12 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 w-56" ref={dropdownRef}>
 
                                     <ul className="mt-2">
                                         <li className='border px-2 border-black text-justify mb-2 rounded-lg bg-blue-gray-50'>
-                                            <NavLink to="/add-volunteer-post" onClick={() => setIsHovered(false)}>
+                                            <NavLink to="/add-volunteer-post">
                                                 Add Volunteer Post
                                             </NavLink>
                                         </li>
                                         <li onClick={handleLogOut} className=' p-2 text-white text-justify rounded-lg bg-red-500'>
-                                            <NavLink to="" onClick={() => setIsHovered(false)}>
+                                            <NavLink to="" >
                                                 Logout
                                             </NavLink>
                                         </li>

@@ -9,9 +9,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import './styles.css'
+import Volunteer_need_card from './Volunteer_need_card';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Home = () => {
-
+    const newPosts = useLoaderData();
+    const gradientBackground = {
+        background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
+    };
     return (
         <div className='bg-white'>
 
@@ -90,6 +95,25 @@ const Home = () => {
                     <div className="swiper-pagination"></div>
                 </div>
             </Swiper>
+
+            <h1 className=' font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
+            text-center my-10 text-transparent bg-clip-text'>Volunteers Need Now</h1>
+            <div className=' my-10 art-card-table'>
+                <div className='lg:grid lg:grid-cols-3 mx-auto '>
+                    {newPosts.map((newPost, index) => (
+                        <div key={newPost._id}>
+                            <Volunteer_need_card newPost={newPost} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <Link to="/need-volunteer">
+                <button className="uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100  mt-3 p-3 rounded-lg lg:w-[500px] mx-auto flex place-content-center
+                   focus:outline-none focus:shadow-outline" style={gradientBackground}>
+                    See All
+                </button>
+            </Link>
 
 
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
