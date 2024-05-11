@@ -12,6 +12,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Add_Volunteer_Post from './components/Add_Volunteer_Post.jsx';
+import Need_Volunteer from './components/Need_Volunteer.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/add-volunteer-post',
+        element: <Add_Volunteer_Post></Add_Volunteer_Post>,
+      },
+      {
+        path: '/need-volunteer',
+        element: <Need_Volunteer></Need_Volunteer>
       }
     ]
   },

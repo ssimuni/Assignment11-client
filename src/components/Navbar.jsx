@@ -4,11 +4,11 @@ import { AuthContext } from '../providers/AuthProvider'
 
 
 const Navbar = () => {
-   
+
     const { user, logOut } = useContext(AuthContext);
     const [loadingUser, setLoadingUser] = useState(true);
     const [isHovered, setIsHovered] = useState(false);
-  
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         setLoadingUser(true);
@@ -24,6 +24,9 @@ const Navbar = () => {
             .catch()
     }
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
     const renderLoggedInNavbar = () => {
         return (
             <div className="flex items-center space-x-4">
@@ -34,10 +37,11 @@ const Navbar = () => {
                                 <div><span className="loading loading-spinner text-info"></span></div>
                             ) : (
                                 <div className="dropdown dropdown-end block">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div tabIndex={0} role="button" onClick={toggleDropdown} className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
                                             <img alt="Tailwind CSS Navbar component" src={user.photoURL || 'https://via.placeholder.com/150'}
                                                 onMouseEnter={() => setIsHovered(true)}
+
                                             />
                                         </div>
                                     </div>
@@ -48,12 +52,29 @@ const Navbar = () => {
                                     className="absolute top-10 right-0 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity "
                                 >
                                     {loadingUser ? 'Loading...' : user.displayName}
-                                    <button
-                                        onClick={handleLogOut}
-                                        className="block mt-2 px-2 py-1 bg-red-500 text-white rounded"
-                                    >
-                                        Log out
-                                    </button>
+
+
+
+                                </div>
+                            )}
+
+                            {isDropdownOpen && (
+                                <div className="absolute top-0 right-12 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 w-56">
+
+                                    <ul className="mt-2">
+                                        <li className='border px-2 border-black text-justify mb-2 rounded-lg bg-blue-gray-50'>
+                                            <NavLink to="/add-volunteer-post" onClick={() => setIsHovered(false)}>
+                                                Add Volunteer Post
+                                            </NavLink>
+                                        </li>
+                                        <li onClick={handleLogOut} className=' p-2 text-white text-justify rounded-lg bg-red-500'>
+                                            <NavLink to="" onClick={() => setIsHovered(false)}>
+                                                Logout
+                                            </NavLink>
+                                        </li>
+
+
+                                    </ul>
                                 </div>
                             )}
                         </Link>
@@ -79,11 +100,7 @@ const Navbar = () => {
 
     const navlinks = <>
         <li><NavLink to="/">Home</NavLink></li>
-        {/* <li><NavLink to="/artlist">My Items</NavLink></li>
-        <li><NavLink to="/addArt">Add New Item</NavLink></li>
-        <li><NavLink to="/about">About Us</NavLink></li>
-        <li><NavLink to="/feedback">Give Feedback</NavLink></li>
-        <li><NavLink to="/allartcraft">See All Items</NavLink></li> */}
+        <li><NavLink to="/need-volunteer">Need Volunteer</NavLink></li>
     </>
     return (
 
