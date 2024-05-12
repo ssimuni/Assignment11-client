@@ -1,12 +1,17 @@
 import React from 'react'
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../providers/AuthProvider'
 import { Navigate, useLoaderData } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from 'react-helmet-async';
 
 const Update = () => {
+
+    useEffect(() => {
+        document.title = 'Update';
+    }, []);
     const posts = useLoaderData();
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',

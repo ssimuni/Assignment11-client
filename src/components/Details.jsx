@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useLoaderData, useParams } from 'react-router-dom'
 import { FaUserTie } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { Helmet } from 'react-helmet-async';
+
 const Details = () => {
 
     const posts = useLoaderData();
+
+    useEffect(() => {
+        document.title = 'Details';
+    }, []);
     const { _id } = useParams();
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',

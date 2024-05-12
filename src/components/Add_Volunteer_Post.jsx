@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from 'react-helmet-async';
 
 const Add_Volunteer_Post = () => {
 
+    useEffect(() => {
+        document.title = 'Add Volunteer Post Page';
+    }, []);
     const { user } = useContext(AuthContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const gradientBackground = {

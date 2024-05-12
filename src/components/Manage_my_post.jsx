@@ -3,8 +3,12 @@ import { useLoaderData } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider';
 import Manage_my_post_table from './Manage_my_post_table';
 import Volunteer_request_table from './Volunteer_request_table';
-
+import { Helmet } from 'react-helmet-async';
 const Manage_my_post = () => {
+
+    useEffect(() => {
+        document.title = 'Manage my posts';
+    }, []);
     const posts = useLoaderData();
     const { user } = useContext(AuthContext);
     const [infos, setInfos] = useState([]);
@@ -70,12 +74,15 @@ const Manage_my_post = () => {
 
                             <div className=''>
 
-                                {
-                                    infos.map(info => <Volunteer_request_table
-                                        key={info._id}
-                                        info={info}
-                                    ></Volunteer_request_table>)
-                                }
+                                {infos.length > 0 ? (
+                                    infos.map(info => (
+                                        <Volunteer_request_table key={info._id} info={info} />
+                                    ))
+                                ) : (
+                                    <p className="text-center mt-4 text-gray-800">
+                                        No volunteer request posts found.
+                                    </p>
+                                )}
 
                             </div>
                         </table>

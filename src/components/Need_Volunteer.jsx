@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Need_Volunteer_card from './Need_Volunteer_card';
+import { Helmet } from 'react-helmet-async';
 
 const Need_Volunteer = () => {
+
+    useEffect(() => {
+        document.title = 'Need Volunteer';
+    }, []);
     const newPosts = useLoaderData();
     const [searchQuery, setSearchQuery] = useState('');
 

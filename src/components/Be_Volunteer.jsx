@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { AuthContext } from '../providers/AuthProvider';
 import { useLoaderData, useParams } from 'react-router-dom'
@@ -6,9 +6,14 @@ import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from 'react-helmet-async';
 
 const Be_Volunteer = () => {
     const posts = useLoaderData();
+
+    useEffect(() => {
+        document.title = 'Be Volunteer';
+    }, []);
     const { user } = useContext(AuthContext);
     const { _id } = useParams();
     const gradientBackground = {

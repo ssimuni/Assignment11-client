@@ -1,7 +1,8 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Helmet } from 'react-helmet-async';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow'
@@ -13,12 +14,17 @@ import Volunteer_need_card from './Volunteer_need_card';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = 'Homepage';
+    }, []);
+
     const newPosts = useLoaderData();
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
     };
     return (
-        <div className='bg-white'>
+        <div className='light:bg-white'>
 
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
             text-center my-10 text-transparent bg-clip-text'>Become a Volunteer and Be the Change.</h1>
@@ -122,7 +128,7 @@ const Home = () => {
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
             text-center my-10 text-transparent bg-clip-text'>Our Features</h1>
 
-            <section className="p-4 lg:p-8 bg-white  dark:text-gray-800">
+            <section className="p-4 lg:p-8 light:bg-white  dark:text-gray-800">
                 <div className="container mx-auto space-y-12">
                     <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
                         <img src="1.jpg" alt="" className="h-60 w-60  aspect-video" />

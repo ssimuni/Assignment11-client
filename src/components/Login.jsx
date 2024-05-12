@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
+    useEffect(() => {
+        document.title = 'Login';
+    }, []);
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
     };
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+
     console.log(location);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
