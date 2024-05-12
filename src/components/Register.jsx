@@ -184,11 +184,7 @@ const Register = () => {
                                                 We are more than just a company
                                             </h4>
                                             <p className="text-sm">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit, sed do eiusmod tempor incididunt ut labore et
-                                                dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                                ea commodo consequat.
+                                                Looking to make a difference? Join our vibrant volunteer community today and lend a helping hand where it's needed most! At VolunTree, we connect passionate individuals with meaningful volunteer opportunities across diverse causes. Whether you're passionate about environmental conservation, community outreach, education, or healthcare, we have opportunities that match your interests and skills. Make a positive impact alongside like-minded individuals and organizations dedicated to creating positive change. Embrace the joy of giving back and be part of something bigger than yourself. Sign up now and start your volunteer journey with us! Together, let's build a brighter, more compassionate world, one act of kindness at a time. Join us and make every moment count.
                                             </p>
                                         </div>
                                     </div>

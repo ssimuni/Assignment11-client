@@ -4,6 +4,9 @@ import { AuthContext } from '../providers/AuthProvider'
 
 
 const Navbar = () => {
+    const gradientBackground = {
+        background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
+    };
 
     const { user, logOut } = useContext(AuthContext);
     const [loadingUser, setLoadingUser] = useState(true);
@@ -126,10 +129,10 @@ const Navbar = () => {
         return (
             <div>
                 <Link to="/login">
-                    <button className="btn bg-gradient-to-r from-blue-400 to-blue-900 text-gray-100">Log In</button>
+                    <button className="btn ml-5 text-white" style={gradientBackground}>Log In</button>
                 </Link>
                 <Link to="/register">
-                    <button className="btn ml-5 bg-gradient-to-l from-blue-400 to-blue-900 text-gray-100">Register</button>
+                    <button className="btn ml-5 text-white" style={gradientBackground}>Register</button>
                 </Link>
             </div>
 
