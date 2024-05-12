@@ -1,5 +1,6 @@
 import React from 'react'
 import '../App.css'
+import { Link } from 'react-router-dom';
 const Need_Volunteer_card = ({ newPost }) => {
 
     const { _id, location, thumbnail, postTitle, category, deadline } = newPost;
@@ -51,10 +52,10 @@ const Need_Volunteer_card = ({ newPost }) => {
                                 </span>
                             </p>
 
-                            <button className="uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100  mt-3 p-3 rounded-lg w-full 
-                   focus:outline-none focus:shadow-outline" style={gradientBackground}>
+                            <Link className="btn uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100  mt-3 p-3 rounded-lg w-full 
+                   focus:outline-none focus:shadow-outline" to={`/details/${_id}`} style={gradientBackground}>
                                 View Details
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
