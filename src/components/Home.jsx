@@ -20,6 +20,9 @@ const Home = () => {
     return (
         <div className='bg-white'>
 
+            <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
+            text-center my-10 text-transparent bg-clip-text'>Become a Volunteer and Be the Change.</h1>
+
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -57,7 +60,7 @@ const Home = () => {
                     clickable: true,
                 }}
                 modules={[EffectCoverflow, Pagination, Navigation]}
-                className="swiper_container mt-20"
+                className="swiper_container mt-10"
             >
 
                 <SwiperSlide>

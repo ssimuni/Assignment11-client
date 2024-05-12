@@ -77,7 +77,7 @@ const Navbar = () => {
                             )}
 
                             {isDropdownOpen && (
-                                <div className="absolute top-0 right-12 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 w-56" ref={dropdownRef}>
+                                <div className="absolute z-50 p-12 border-red-600 top-0 right-12 bg-white border-2 shadow-lg rounded-lg text-black px-1 py-0.5 w-56" ref={dropdownRef}>
 
                                     <ul className="mt-2">
                                         <li className='border px-2 border-black text-justify mb-2 rounded-lg bg-blue-gray-50'>
@@ -85,11 +85,16 @@ const Navbar = () => {
                                                 Add Volunteer Post
                                             </NavLink>
                                         </li>
-                                        <li onClick={handleLogOut} className=' p-2 text-white text-justify rounded-lg bg-red-500'>
+                                        <li className='border px-2 border-black text-justify mb-2 rounded-lg bg-blue-gray-50'>
+                                            <NavLink to="/manage_my_post">
+                                                Manage my Post
+                                            </NavLink>
+                                        </li>
+                                        <button onClick={handleLogOut} className=' p-2 text-white text-justify rounded-lg bg-red-500'>
                                             <NavLink to="" >
                                                 Logout
                                             </NavLink>
-                                        </li>
+                                        </button>
 
 
                                     </ul>

@@ -16,6 +16,8 @@ import {
 import Add_Volunteer_Post from './components/Add_Volunteer_Post.jsx';
 import Need_Volunteer from './components/Need_Volunteer.jsx';
 import Be_Volunteer from './components/Be_Volunteer.jsx';
+import Manage_my_post from './components/Manage_my_post.jsx';
+import Update from './components/Update.jsx';
 
 
 const router = createBrowserRouter([
@@ -52,9 +54,19 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:5000/volunteer-posts')
       },
       {
+        path: '/manage_my_post',
+        element: <PrivateRoute><Manage_my_post></Manage_my_post></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/volunteer-posts')
+      },
+      {
         path: '/details/:_id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/volunteer-posts')
+      },
+      {
+        path: '/update/:id',
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/volunteer-posts/${params.id}`)
       }
     ]
   },

@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import { useContext } from "react";
-import { AuthContext } from '../providers/AuthProvider';
-import { useLoaderData, useParams } from 'react-router-dom'
+import React from 'react'
+import { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider'
+import { Navigate, useLoaderData } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Be_Volunteer = () => {
+const Update = () => {
     const posts = useLoaderData();
-    const { user } = useContext(AuthContext);
-    const { _id } = useParams();
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
     };
-    const post = posts.find(post => post._id === _id);
 
-    console.log(post);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const { user } = useContext(AuthContext);
+    const { _id, name, postTitle, email, thumbnail, category, deadline, location, description, no } = posts;
 
-    const handlePost = event => {
+    const handleUpdatePost = event => {
         event.preventDefault();
         const form = event.target;
 
@@ -26,20 +24,18 @@ const Be_Volunteer = () => {
         const title = form.title.value;
         const category = form.category.value;
         const location = form.location.value;
-        const no = parseInt(form.no.value);
+        const no = form.no.value;
         const deadline = form.deadline.value;
         const description = form.description.value;
         const email = form.email.value;
         const name = form.name.value;
-        const suggestion = form.suggestion.value;
-        const status = form.status.value;
 
-        const newPost = { name, email, thumbnail, title, category, location, no, deadline, description, suggestion, status };
+        const newPost = { name, email, thumbnail, title, category, location, no, deadline, description };
 
         console.log(newPost);
 
-        fetch('http://localhost:5000/volunteer-requests', {
-            method: 'POST',
+        fetch(`http://localhost:5000/volunteer-posts/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -48,25 +44,16 @@ const Be_Volunteer = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Request Sent!',
+                        text: 'Successfully updated painting!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
-                    const postId = data.insertedId;
-                    fetch(`http://localhost:5000/volunteer-posts/${postId}`, {
-                        method: 'PATCH'
-                    })
-                        .then((res) => res.json())
-                        .then((updatedPost) => {
-                            console.log('Post updated:', updatedPost);
 
-                        })
                 }
             })
-
     }
 
     return (
@@ -92,21 +79,20 @@ const Be_Volunteer = () => {
                                                 </h4>
                                             </div>
 
-                                            <form onSubmit={handlePost}>
+                                            <form onSubmit={handleUpdatePost}>
                                                 <div className="flex text-center mx-auto">
-                                                    <h1 className="font-bold uppercase text-4xl bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Be a Volunteer</h1>
+                                                    <h1 className="font-bold uppercase text-4xl bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Update Post</h1>
                                                 </div>
 
                                                 <div className="relative mt-5">
                                                     <input
                                                         id="thumbnail"
                                                         name="thumbnail"
-                                                        defaultValue={post.thumbnail}
+                                                        defaultValue={thumbnail}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Thumbnail"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Thumbnail</label>
                                                 </div>
 
@@ -114,12 +100,11 @@ const Be_Volunteer = () => {
                                                     <input
                                                         id="title"
                                                         name="title"
-                                                        defaultValue={post.postTitle}
+                                                        defaultValue={postTitle}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Title"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Title</label>
                                                 </div>
 
@@ -127,12 +112,11 @@ const Be_Volunteer = () => {
                                                     <textarea
                                                         id="description"
                                                         name="description"
-                                                        defaultValue={post.description}
+                                                        defaultValue={description}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="description"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Description</label>
                                                 </div>
 
@@ -140,12 +124,11 @@ const Be_Volunteer = () => {
                                                     <input
                                                         id="category"
                                                         name="category"
-                                                        defaultValue={post.category}
+                                                        defaultValue={category}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Category"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Category</label>
                                                 </div>
 
@@ -153,12 +136,11 @@ const Be_Volunteer = () => {
                                                     <input
                                                         id="location"
                                                         name="location"
-                                                        defaultValue={post.location}
+                                                        defaultValue={location}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Location"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Location</label>
                                                 </div>
 
@@ -166,30 +148,27 @@ const Be_Volunteer = () => {
                                                     <input
                                                         id="no"
                                                         name="no"
-                                                        defaultValue={post.no}
+                                                        defaultValue={no}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="No. of volunteers needed"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">No. of volunteers needed</label>
                                                 </div>
 
-
                                                 <div className="relative mt-5">
-                                                    <input
+                                                    <span className='bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text mr-5 font-bold'>Deadline: </span>
+                                                    <DatePicker
                                                         id="deadline"
                                                         name="deadline"
-                                                        defaultValue={post.deadline}
-                                                        type="text"
-                                                        className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
-                                                        placeholder="Deadline"
-                                                        required
-                                                        readOnly />
-                                                    <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Deadline</label>
+                                                        toggleCalendarOnIconClick
+                                                        selected={selectedDate}
+                                                        onChange={(date) => setSelectedDate(date)}
+                                                        className='bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text font-bold'
+
+                                                    />
+
                                                 </div>
-
-
 
 
 
@@ -202,8 +181,7 @@ const Be_Volunteer = () => {
                                                         type="email"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Email"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-black text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text font-bold">Email</label>
                                                 </div>
 
@@ -216,36 +194,8 @@ const Be_Volunteer = () => {
                                                         type="name"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
                                                         placeholder="Name"
-                                                        required
-                                                        readOnly />
+                                                        required />
                                                     <label for="password" className="absolute left-0 -top-3.5 text-black text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text font-bold">Name</label>
-                                                </div>
-
-
-                                                <div className="relative mt-5">
-                                                    <textarea
-                                                        id="suggestion"
-                                                        name="suggestion"
-
-                                                        type="text"
-                                                        className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
-                                                        placeholder="suggestion"
-                                                        required
-                                                    />
-                                                    <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Suggestion</label>
-                                                </div>
-
-                                                <div className="relative mt-5">
-                                                    <input
-                                                        id="status"
-                                                        name="status"
-                                                        defaultValue="Requested"
-                                                        type="text"
-                                                        className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
-                                                        placeholder="status"
-                                                        required
-                                                    />
-                                                    <label for="password" className="absolute left-0 -top-3.5 text-sm font-bold peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm bg-gradient-to-r from-orange-400 to-orange-900 inline-block text-transparent bg-clip-text">Status</label>
                                                 </div>
 
 
@@ -253,7 +203,7 @@ const Be_Volunteer = () => {
 
                                                     <button className="uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100 p-3 rounded-lg w-full 
                    mb-4 focus:outline-none focus:shadow-outline" style={gradientBackground}>
-                                                        Request
+                                                        Update
                                                     </button>
 
                                                 </div>
@@ -288,4 +238,4 @@ const Be_Volunteer = () => {
     )
 }
 
-export default Be_Volunteer
+export default Update
