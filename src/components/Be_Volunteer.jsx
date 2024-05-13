@@ -52,7 +52,7 @@ const Be_Volunteer = () => {
         })
             .then(res => res.json())
             .then(data => {
-               // console.log(data);
+                
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -66,7 +66,6 @@ const Be_Volunteer = () => {
                     })
                         .then((res) => res.json())
                         .then((updatedPost) => {
-                          //  console.log('Post updated:', updatedPost);
 
                         })
                 }

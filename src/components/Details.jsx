@@ -30,9 +30,6 @@ const Details = () => {
             });
             e.preventDefault();
         }
-        else {
-
-        }
     };
 
     // console.log(post);
