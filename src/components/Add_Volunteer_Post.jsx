@@ -49,7 +49,7 @@ const Add_Volunteer_Post = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Successfully added painting!',
+                        text: 'Successfully added post!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
