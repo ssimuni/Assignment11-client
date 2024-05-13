@@ -36,7 +36,7 @@ const Details = () => {
 
     return (
         <div>
-            <div class="ml-20 antialiased text-gray-900 mt-20">
+            <div class="lg:ml-20 antialiased text-gray-900 mt-20">
                 <div>
 
                     <img src={post.thumbnail} alt=" random imgee" class=" object-cover w-[800px] h-96 object-center rounded-lg shadow-md" />
