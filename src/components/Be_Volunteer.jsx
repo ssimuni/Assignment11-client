@@ -52,7 +52,7 @@ const Be_Volunteer = () => {
         })
             .then(res => res.json())
             .then(data => {
-                
+
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -60,13 +60,14 @@ const Be_Volunteer = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
-                    const postId = data.insertedId;
-                    fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${postId}`, {
+                    //const postId = data.insertedId;
+                    fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${_id}`, {
                         method: 'PATCH'
                     })
                         .then((res) => res.json())
-                        .then((updatedPost) => {
 
+                        .then((updatedPost) => {
+                            console.log(updatedPost);
                         })
                 }
             })

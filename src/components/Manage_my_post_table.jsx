@@ -11,7 +11,7 @@ const Manage_my_post_table = ({ post }) => {
     };
 
     const handleDelete = _id => {
-       // console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -27,7 +27,7 @@ const Manage_my_post_table = ({ post }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                       // console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

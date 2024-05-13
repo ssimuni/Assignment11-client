@@ -75,17 +75,20 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email || user.email;
+            const userEmail = currentUser?.email || user?.email;
             const loggedUser = { email: userEmail };
-           // console.log('user in the auth state changed', currentUser);
+            // console.log('user in the auth state changed', currentUser);
             setUser(currentUser);
             setLoading(false);
-            if (currentUser) {
+            if (currentUser?.email) {
 
                 axios.post('https://assignment11server-ssimunis-projects.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
-                     //   console.log(res.data);
+                        //   console.log(res.data);
                     })
+            }
+            else {
+                setUser(null);
             }
         });
         return () => {
