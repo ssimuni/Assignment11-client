@@ -1,8 +1,36 @@
-# React + Vite
+# VolunTree
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to VolunTree, a volunteer management website built using the MERN stack!
 
-Currently, two official plugins are available:
+Check out the live site here: [https://assignment11-68e2e.web.app/]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+
+- **User-Friendly Volunteer Management:**
+  - Post, update, and delete volunteer needs.
+  - Volunteer for other users' posts.
+  
+- **Stunning Design:**
+  - Easy on the Eyes: Pleasant color combinations and balanced design.
+  - Clean Layout: Organized and clutter-free interface.
+  
+- **Customized Components:**
+  - Tailored styling for a unique look and feel.
+  - Customized navigation bar and footer.
+
+- **Authentication and Authorization:**
+  - Password and email-based login/register functionality.
+  - JWT authentication for protected routes.
+  
+- **Responsive Design:**
+  - Optimized for mobile, tablet, and desktop views.
+  
+## Technologies Used
+
+- MongoDB
+- Express.js
+- React.js
+- Node.js
+- Firebase Authentication
+- GitHub/GitLab OAuth
+
