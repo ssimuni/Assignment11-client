@@ -15,8 +15,8 @@ const Need_Volunteer_table = ({ newPost }) => {
     return (
         <div> <table class="w-full">
             <tbody class="bg-white">
-                <tr class="text-gray-700 w-full">
-                    <td class="px-4 py-3 border">
+                <tr class="text-gray-700 w-full border">
+                    <td class="px-4 py-3 ">
                         <div class="flex items-center text-sm">
                             <div class="relative w-8 h-8 mr-3 rounded-full md:block">
                                 <img class="object-cover w-full h-full rounded-full" src={thumbnail} alt="" loading="lazy" />
@@ -28,7 +28,7 @@ const Need_Volunteer_table = ({ newPost }) => {
                             </div>
                         </div>
                     </td>
-                    <td class="px-4 py-3 text-ms font-semibold border">{location}</td>
+                    <td class="px-4 py-3 text-ms font-semibold ">{location}</td>
                     <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {category} </span>
                     </td>
