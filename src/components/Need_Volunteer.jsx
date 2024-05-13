@@ -35,7 +35,7 @@ const Need_Volunteer = () => {
                     className="w-[800px] flex mx-auto px-4 py-2 mb-4 border rounded-lg border-black"
                 />
 
-                <div className='lg:grid lg:grid-cols-2'>
+                <div className='lg:grid lg:grid-cols-3 justify-center mx-auto'>
                     {filteredPosts.map((newPost, index) => (
                         <div key={newPost._id}>
                             <Need_Volunteer_card newPost={newPost} />

@@ -21,12 +21,12 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
+       // console.log(e.currentTarget);
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const photo = e.target.photo.value;
-        console.log(email, password, name)
+     //   console.log(email, password, name)
 
         setRegisterError('');
 
@@ -48,7 +48,7 @@ const Register = () => {
         if (password)
             await createUser(email, password, name, photo)
                 .then(result => {
-                    console.log(result.user);
+                  //  console.log(result.user);
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',

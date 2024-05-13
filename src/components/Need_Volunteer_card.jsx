@@ -3,7 +3,7 @@ import '../App.css'
 import { Link } from 'react-router-dom';
 const Need_Volunteer_card = ({ newPost }) => {
 
-    const { _id, location, thumbnail, postTitle, category, deadline } = newPost;
+    const { _id, location, no, thumbnail, postTitle, category, deadline } = newPost;
 
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
@@ -13,13 +13,8 @@ const Need_Volunteer_card = ({ newPost }) => {
             <div class="my-10 antialiased text-gray-900">
                 <div className=''>
 
-                    <div>
-                        <img src={thumbnail} alt=" random imgee" class=" object-cover w-[400px] h-80 object-center rounded-lg shadow-md lg:ml-20" />
-                    </div>
 
-
-
-                    <div class="relative rounded-lg lg:mr-10 -mt-20 w-[350px] bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 mx-auto p-1 shadow-lg">
+                    <div class="mt-20 gap-4 rounded-lg w-[350px] bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 mx-auto p-1 shadow-lg">
                         <div class="bg-white p-6 rounded-lg shadow-lg">
 
                             <h4 class="mt-1 text-m font-semibold uppercase leading-tight text-transparent bg-gradient-to-r from-orange-300 via-red-700 to-purple-800 bg-clip-text mb-5">{postTitle}</h4>
@@ -31,6 +26,16 @@ const Need_Volunteer_card = ({ newPost }) => {
                                 </span>
                                 <div class="ml-2 text-gray-600 uppercase text-s font-semibold tracking-wider">
                                     {deadline}
+                                </div>
+                            </div>
+
+                            <div class="flex mt-2 items-baseline">
+
+                                <span style={gradientBackground} class="bg-teal-200 text-white p-2 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                                    Need Volunteer
+                                </span>
+                                <div class="ml-2 text-gray-600 uppercase text-s font-semibold tracking-wider">
+                                    {no}
                                 </div>
                             </div>
 

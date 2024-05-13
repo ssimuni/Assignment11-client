@@ -21,7 +21,7 @@ const Be_Volunteer = () => {
     };
     const post = posts.find(post => post._id === _id);
 
-    console.log(post);
+    //console.log(post);
 
     const handlePost = event => {
         event.preventDefault();
@@ -41,9 +41,9 @@ const Be_Volunteer = () => {
 
         const newPost = { name, email, thumbnail, title, category, location, no, deadline, description, suggestion, status };
 
-        console.log(newPost);
+        //console.log(newPost);
 
-        fetch('http://localhost:5000/volunteer-requests', {
+        fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-requests', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Be_Volunteer = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+               // console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -61,12 +61,12 @@ const Be_Volunteer = () => {
                         confirmButtonText: 'Cool'
                     })
                     const postId = data.insertedId;
-                    fetch(`http://localhost:5000/volunteer-posts/${postId}`, {
+                    fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${postId}`, {
                         method: 'PATCH'
                     })
                         .then((res) => res.json())
                         .then((updatedPost) => {
-                            console.log('Post updated:', updatedPost);
+                          //  console.log('Post updated:', updatedPost);
 
                         })
                 }

@@ -10,7 +10,7 @@ const Volunteer_request_table = ({ info }) => {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
     };
     const handleDelete = _id => {
-        console.log(_id);
+       // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -21,12 +21,12 @@ const Volunteer_request_table = ({ info }) => {
             confirmButtonText: "Yes, cancel it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/volunteer-requests/${_id}`, {
+                fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-requests/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                      //  console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Canceled!",

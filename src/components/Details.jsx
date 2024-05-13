@@ -4,6 +4,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import { FaUserTie } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Details = () => {
 
@@ -13,12 +14,28 @@ const Details = () => {
         document.title = 'Details';
     }, []);
     const { _id } = useParams();
+
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
     };
     const post = posts.find(post => post._id === _id);
 
-    console.log(post);
+    const handleVolunteerClick = (e) => {
+
+        if (post.no === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No need!',
+                text: 'No volunteers needed at the moment!',
+            });
+            e.preventDefault();
+        }
+        else {
+
+        }
+    };
+
+    // console.log(post);
 
     return (
         <div>
@@ -91,7 +108,7 @@ const Details = () => {
                                     <IoIosMail />
                                     <span className="mt-0 ml-3">{post.email}</span>
                                 </p>
-                                <Link className="btn uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100  mt-3 p-3 rounded-lg w-full 
+                                <Link onClick={handleVolunteerClick} className="btn uppercase text-sm font-bold tracking-wide bg-opacity-10 text-gray-100  mt-3 p-3 rounded-lg w-full 
                    focus:outline-none focus:shadow-outline" to={`/be-volunteer/${_id}`} style={gradientBackground}>
                                     Be a Volunteer
                                 </Link>

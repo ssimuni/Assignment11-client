@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/volunteer-posts')
+        loader: () => fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts')
       },
       {
         path: '/login',
@@ -47,27 +47,27 @@ const router = createBrowserRouter([
       {
         path: '/be-volunteer/:_id',
         element: <PrivateRoute><Be_Volunteer></Be_Volunteer></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/volunteer-posts')
+        loader: () => fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts')
       },
       {
         path: '/need-volunteer',
         element: <Need_Volunteer></Need_Volunteer>,
-        loader: () => fetch('http://localhost:5000/volunteer-posts')
+        loader: () => fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts')
       },
       {
         path: '/manage_my_post',
         element: <PrivateRoute><Manage_my_post></Manage_my_post></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/volunteer-posts')
+        loader: () => fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts')
       },
       {
         path: '/details/:_id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/volunteer-posts')
+        loader: () => fetch('https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts')
       },
       {
         path: '/update/:id',
         element: <PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/volunteer-posts/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${params.id}`)
       }
     ]
   },

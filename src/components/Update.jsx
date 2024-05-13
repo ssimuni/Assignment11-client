@@ -37,9 +37,9 @@ const Update = () => {
 
         const newPost = { name, email, thumbnail, title, category, location, no, deadline, description };
 
-        console.log(newPost);
+        //console.log(newPost);
 
-        fetch(`http://localhost:5000/volunteer-posts/${_id}`, {
+        fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const Update = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',

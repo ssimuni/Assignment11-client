@@ -11,7 +11,7 @@ const Manage_my_post_table = ({ post }) => {
     };
 
     const handleDelete = _id => {
-        console.log(_id);
+       // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -22,12 +22,12 @@ const Manage_my_post_table = ({ post }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/volunteer-posts/${_id}`, {
+                fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                       // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

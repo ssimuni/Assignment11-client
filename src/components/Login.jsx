@@ -16,21 +16,21 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    console.log(location);
+    //console.log(location);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
+      //  console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password')
-        console.log(email, password)
+       // console.log(email, password)
 
         signIn(email, password)
             .then(result => {
-                console.log(result.user);
+              //  console.log(result.user);
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
