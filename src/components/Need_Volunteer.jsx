@@ -39,7 +39,7 @@ const Need_Volunteer = () => {
 
             <div className='mx-auto justify-center'>
 
-                <div className='flex'> <input
+                <div className='lg:flex'> <input
                     type="text"
                     value={searchQuery}
                     onChange={handleSearchChange}
