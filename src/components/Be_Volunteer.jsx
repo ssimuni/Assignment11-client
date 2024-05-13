@@ -58,7 +58,7 @@ const Be_Volunteer = () => {
                         title: 'Success!',
                         text: 'Request Sent!',
                         icon: 'success',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'Ok'
                     })
                     //const postId = data.insertedId;
                     fetch(`https://assignment11server-ssimunis-projects.vercel.app/volunteer-posts/${_id}`, {
