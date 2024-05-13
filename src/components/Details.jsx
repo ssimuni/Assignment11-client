@@ -11,7 +11,7 @@ const Details = () => {
     const posts = useLoaderData();
 
     useEffect(() => {
-        document.title = 'Details';
+        document.title = 'Details Page';
     }, []);
     const { _id } = useParams();
 
