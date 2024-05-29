@@ -42,9 +42,9 @@ const Volunteer_request_table = ({ info }) => {
         <div>
 
             <section class="container mx-auto p-6 font-mono">
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full  overflow-hidden rounded-lg shadow-lg">
                     <div class="w-full overflow-x-auto">
-                        <table class="w-full">
+                        <table class="w-full border">
                             <tbody class="bg-white">
                                 <tr class="text-gray-700 w-full">
                                     <td class="px-4 py-3 lg:w-[400px]">
@@ -68,7 +68,7 @@ const Volunteer_request_table = ({ info }) => {
 
 
 
-                                    <td class="px-4 py-3 text-xs "><button className='text-center p-2 text-white justify-center rounded' style={gradientBackground} onClick={() => handleDelete(_id)}>Cancel</button></td>
+                                    <td class="px-4 py-3 text-xs text-right"><button className='text-center p-2 text-white justify-center rounded' style={gradientBackground} onClick={() => handleDelete(_id)}>Cancel</button></td>
                                 </tr>
 
                             </tbody>

@@ -44,10 +44,10 @@ const Manage_my_post_table = ({ post }) => {
         <div>
 
             <section class="container mx-auto p-6 font-mono">
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full overflow-hidden rounded-lg shadow-lg">
                     <div class="w-full overflow-x-auto">
                         <table class="w-full">
-                            <tbody class="bg-white">
+                            <tbody class="bg-white border">
                                 <tr class="text-gray-700 w-full">
                                     <td class="px-4 py-3 lg:w-[400px]">
                                         <div class="flex items-center text-sm">
@@ -74,7 +74,7 @@ const Manage_my_post_table = ({ post }) => {
                                         </Link>
                                     </td>
 
-                                    <td class="px-4 py-3 text-xs "><button className='text-center p-2 text-white justify-center rounded' style={gradientBackground} onClick={() => handleDelete(_id)}>Delete</button></td>
+                                    <td class="px-4 py-3 text-xs text-right"><button className='text-center p-2 text-white justify-center rounded' style={gradientBackground} onClick={() => handleDelete(_id)}>Delete</button></td>
                                 </tr>
 
                             </tbody>

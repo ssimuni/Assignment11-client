@@ -44,8 +44,8 @@ const Manage_my_post = () => {
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
             text-center my-10 text-transparent bg-clip-text'>My Need Volunteer Posts</h1>
 
-            <section class="container mx-auto p-6 font-mono">
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+            <section class=" container mx-auto p-6 font-mono">
+                <div class=" border w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                     <div class="w-full overflow-x-auto">
                         <table class="w-full">
 
@@ -68,7 +68,7 @@ const Manage_my_post = () => {
             text-center my-10 text-transparent bg-clip-text'>My Volunteer Request Posts</h1>
 
             <section class="container mx-auto p-6 font-mono">
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="border w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                     <div class="w-full overflow-x-auto">
                         <table class="w-full">
 
