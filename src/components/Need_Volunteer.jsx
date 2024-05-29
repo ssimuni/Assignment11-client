@@ -39,20 +39,24 @@ const Need_Volunteer = () => {
 
             <div className='mx-auto justify-center'>
 
-                <div className='lg:flex'> <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    placeholder="Search by Post Title"
-                    className="lg:w-[800px] flex mx-auto px-4 py-2 mb-4 border rounded-lg border-black "
-                />
+                <div className='lg:flex'>
 
-                    <button
-                        className=' text-white font-bold w-8 h-8 mx-auto -ml-20 rounded p-2'
-                        onClick={toggleLayout} style={gradientBackground}
-                    >
-                        {isCardView ? <RiLayoutGrid2Fill /> : <MdFormatLineSpacing />}
-                    </button></div>
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        placeholder="Search by Post Title"
+                        className="lg:w-[800px] flex mx-auto px-4 py-2 mb-4 border rounded-lg border-black "
+                    />
+                    <div>
+                        <button
+                            className=' text-white font-bold w-8 h-8 mx-auto -ml-20 rounded p-2'
+                            onClick={toggleLayout} style={gradientBackground}
+                        >
+                            {isCardView ? <RiLayoutGrid2Fill /> : <MdFormatLineSpacing />}
+                        </button>
+                    </div>
+                </div>
 
 
 

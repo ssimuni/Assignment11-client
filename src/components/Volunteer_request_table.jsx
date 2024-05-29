@@ -47,7 +47,7 @@ const Volunteer_request_table = ({ info }) => {
                         <table class="w-full">
                             <tbody class="bg-white">
                                 <tr class="text-gray-700 w-full">
-                                    <td class="px-4 py-3 border">
+                                    <td class="px-4 py-3 lg:w-[400px]">
                                         <div class="flex items-center text-sm">
                                             <div class="relative w-8 h-8 mr-3 rounded-full md:block">
                                                 <img class="object-cover w-full h-full rounded-full" src={thumbnail} alt="" loading="lazy" />
@@ -59,9 +59,9 @@ const Volunteer_request_table = ({ info }) => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{location}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{deadline}</td>
-                                    <td class="px-4 py-3 text-xs">
+                                    <td class="px-4 py-3 text-ms font-semibold lg:w-[250px]">{location}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold lg:w-36">{deadline}</td>
+                                    <td class="px-4 py-3 text-xs w-52 text-center">
                                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {category} </span>
                                     </td>
 

@@ -28,7 +28,7 @@ const Be_Volunteer = () => {
         const form = event.target;
 
         const thumbnail = form.thumbnail.value;
-        const title = form.title.value;
+        const postTitle = form.postTitle.value;
         const category = form.category.value;
         const location = form.location.value;
         const no = parseInt(form.no.value);
@@ -39,7 +39,7 @@ const Be_Volunteer = () => {
         const suggestion = form.suggestion.value;
         const status = form.status.value;
 
-        const newPost = { name, email, thumbnail, title, category, location, no, deadline, description, suggestion, status };
+        const newPost = { name, email, thumbnail, postTitle, category, location, no, deadline, description, suggestion, status };
 
         //console.log(newPost);
 
@@ -117,8 +117,8 @@ const Be_Volunteer = () => {
 
                                                 <div className="relative mt-5">
                                                     <input
-                                                        id="title"
-                                                        name="title"
+                                                        id="postTitle"
+                                                        name="postTitle"
                                                         defaultValue={post.postTitle}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"

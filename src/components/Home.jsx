@@ -109,7 +109,7 @@ const Home = () => {
             text-center my-10 text-transparent bg-clip-text'>Volunteers Need Now</h1>
             <div className=' my-10 art-card-table'>
                 <div className='lg:grid lg:grid-cols-3 mx-auto '>
-                    {newPosts.map((newPost, index) => (
+                    {newPosts.slice(0, 6).map((newPost, index) => (
                         <div key={newPost._id}>
                             <Volunteer_need_card newPost={newPost} />
                         </div>

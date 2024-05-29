@@ -26,7 +26,7 @@ const Update = () => {
         const form = event.target;
 
         const thumbnail = form.thumbnail.value;
-        const title = form.title.value;
+        const postTitle = form.postTitle.value;
         const category = form.category.value;
         const location = form.location.value;
         const no = form.no.value;
@@ -35,7 +35,7 @@ const Update = () => {
         const email = form.email.value;
         const name = form.name.value;
 
-        const newPost = { name, email, thumbnail, title, category, location, no, deadline, description };
+        const newPost = { name, email, thumbnail, postTitle, category, location, no, deadline, description };
 
         //console.log(newPost);
 
@@ -103,8 +103,8 @@ const Update = () => {
 
                                                 <div className="relative mt-5">
                                                     <input
-                                                        id="title"
-                                                        name="title"
+                                                        id="postTitle"
+                                                        name="postTitle"
                                                         defaultValue={postTitle}
                                                         type="text"
                                                         className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-black focus:outline-none focus:borer-rose-600"
