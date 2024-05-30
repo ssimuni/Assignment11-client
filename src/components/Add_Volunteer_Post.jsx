@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Helmet } from 'react-helmet-async';
 
 const Add_Volunteer_Post = () => {
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = 'Add Volunteer Post Page';
@@ -52,8 +53,9 @@ const Add_Volunteer_Post = () => {
                         text: 'Successfully added post!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })
-
+                    }).then(() => {
+                        navigate('/manage_my_post'); 
+                    });
                 }
             })
     }

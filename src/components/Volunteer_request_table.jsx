@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 const Volunteer_request_table = ({ info }) => {
 
 
-    const { _id, thumbnail, title, category, deadline, location } = info || {};
+    const { _id, thumbnail, postTitle, category, deadline, location } = info || {};
 
     const gradientBackground = {
         background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
@@ -54,7 +54,7 @@ const Volunteer_request_table = ({ info }) => {
                                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                             </div>
                                             <div className=''>
-                                                <p class="font-semibold text-black">{title}</p>
+                                                <p class="font-semibold text-black">{postTitle}</p>
 
                                             </div>
                                         </div>

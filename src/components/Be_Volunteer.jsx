@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { AuthContext } from '../providers/AuthProvider';
-import { useLoaderData, useParams } from 'react-router-dom'
+import { Navigate, useLoaderData, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
@@ -68,6 +68,7 @@ const Be_Volunteer = () => {
 
                         .then((updatedPost) => {
                             console.log(updatedPost);
+                            <Navigate to="/manage_my_post"></Navigate>
                         })
                 }
             })

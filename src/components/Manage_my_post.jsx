@@ -4,6 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import Manage_my_post_table from './Manage_my_post_table';
 import Volunteer_request_table from './Volunteer_request_table';
 import { Helmet } from 'react-helmet-async';
+import Requests_received from './Requests_received';
 const Manage_my_post = () => {
 
     useEffect(() => {
@@ -38,11 +39,22 @@ const Manage_my_post = () => {
         );
     });
 
+    const myReqs = infos.filter(info => {
+        return (
+            info.name === user.displayName &&
+            info.email === user.email
+        );
+    });
+
+    const postTitles = myPosts.map(post => post.postTitle);
+
+    const receivedReqs = infos.filter(info => postTitles.includes(info.postTitle));
+
 
     return (
         <div>
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
-            text-center my-10 text-transparent bg-clip-text'>My Need Volunteer Posts</h1>
+            text-center my-10 text-transparent bg-clip-text'>My Posts</h1>
 
             <section class=" container mx-auto p-6 font-mono">
                 <div class=" border w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -65,7 +77,7 @@ const Manage_my_post = () => {
             </section>
 
             <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
-            text-center my-10 text-transparent bg-clip-text'>My Volunteer Request Posts</h1>
+            text-center my-10 text-transparent bg-clip-text'>Posts I have requested for</h1>
 
             <section class="container mx-auto p-6 font-mono">
                 <div class="border w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -74,9 +86,11 @@ const Manage_my_post = () => {
 
                             <div className=''>
 
-                                {infos.length > 0 ? (
-                                    infos.map(info => (
-                                        <Volunteer_request_table key={info._id} info={info} />
+                                {myReqs.length > 0 ? (
+                                    myReqs.map(info => (
+                                        <Volunteer_request_table
+                                            key={info._id}
+                                            info={info} />
                                     ))
                                 ) : (
                                     <p className="text-center mt-4 text-gray-800">
@@ -89,6 +103,38 @@ const Manage_my_post = () => {
                     </div>
                 </div>
             </section>
+
+
+            <h1 className='mt-20 font-bold uppercase text-5xl bg-gradient-to-r from-orange-100 via-red-700 to-purple-800 
+            text-center my-10 text-transparent bg-clip-text'>Requests I have received</h1>
+
+            <section class="container mx-auto p-6 font-mono">
+                <div class="border w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full">
+
+                            <div className=''>
+
+                                {receivedReqs.length > 0 ? (
+                                    receivedReqs.map(info => (
+                                        <Requests_received
+                                            key={info._id}
+                                            info={info}
+                                        />
+                                    ))
+                                ) : (
+                                    <p className="text-center mt-4 text-gray-800">
+                                        No volunteer request posts found.
+                                    </p>
+                                )}
+
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+
         </div>
     )
 }
